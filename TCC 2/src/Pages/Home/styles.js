@@ -37,7 +37,8 @@ export default StyleSheet.create({
         maxWidth: "100%"
       },
       content: {
-        flex: 3
+        flex: 3,
+        justifyContent:"center"
       },
       textBox: {
         width: 100,
