@@ -17,49 +17,49 @@ export default function Home() {
         page: "Imc"
       },
       {
-        img:require('./../../../assets/Imc.png'),
+        img:require('./../../../assets/Beber-Agua.png'),
         nome: "Beber água",
         desc: "descrição",
         page: "BeberAgua"
       },
       {
-        img:require('./../../../assets/Imc.png'),
+        img:require('./../../../assets/Tomar-Remedio.png'),
         nome: "Tomar Remédio",
         desc: "descrição",
         page: "TomarRemedio"
       },
       {
-        img:require('./../../../assets/Imc.png'),
+        img:require('./../../../assets/Vacinas.png'),
         nome: "Vacinas",
         desc: "descrição",
         page: "Vacinas"
       },
       {
-        img:require('./../../../assets/Imc.png'),
+        img:require('./../../../assets/Meditacao.png'),
         nome: "Meditação",
         desc: "descrição",
         page: "Meditacao"
       },
       {
-        img:require('./../../../assets/Imc.png'),
+        img:require('./../../../assets/Controle-de-Diabetes.png'),
         nome: "Controle de Diabetes",
         desc: "descrição",
         page: "ControleDiabetes"
       },
       {
-        img:require('./../../../assets/Imc.png'),
+        img:require('./../../../assets/Pressao.png'),
         nome: "Pressão",
         desc: "descrição",
         page: "Pressao"
       },
       {
-        img:require('./../../../assets/Imc.png'),
+        img:require('./../../../assets/Frutas.png'),
         nome: "Frutas e Suas Informações",
         desc: "descrição",
         page: "FrutasInformacoes"
       },
       {
-        img:require('./../../../assets/Imc.png'),
+        img:require('./../../../assets/Frases-Motivacionais.png'),
         nome: "Frases Motivacionais",
         desc: "descrição",
         page: "FrasesMotivacionais"
