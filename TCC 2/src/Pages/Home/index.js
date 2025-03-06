@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View } from 'react-native';
-import { FlatList, Pressable, ScrollView } from 'react-native-web';
+import { FlatList, Pressable, Image } from 'react-native-web';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles'
@@ -11,22 +11,58 @@ export default function Home() {
 
     const tabs = [
       {
-        img: "img",
+        img:require('./../../../assets/Imc.png'),
         nome: "IMC",
         desc: "descrição",
         page: "Imc"
       },
       {
-        img: "img",
-        nome: "IMC",
+        img:require('./../../../assets/Imc.png'),
+        nome: "Beber água",
         desc: "descrição",
-        page: "Imc"
+        page: "BeberAgua"
       },
       {
-        img: "img",
-        nome: "IMC",
+        img:require('./../../../assets/Imc.png'),
+        nome: "Tomar Remédio",
         desc: "descrição",
-        page: "Imc"
+        page: "TomarRemedio"
+      },
+      {
+        img:require('./../../../assets/Imc.png'),
+        nome: "Vacinas",
+        desc: "descrição",
+        page: "Vacinas"
+      },
+      {
+        img:require('./../../../assets/Imc.png'),
+        nome: "Meditação",
+        desc: "descrição",
+        page: "Meditacao"
+      },
+      {
+        img:require('./../../../assets/Imc.png'),
+        nome: "Controle de Diabetes",
+        desc: "descrição",
+        page: "ControleDiabetes"
+      },
+      {
+        img:require('./../../../assets/Imc.png'),
+        nome: "Pressão",
+        desc: "descrição",
+        page: "Pressao"
+      },
+      {
+        img:require('./../../../assets/Imc.png'),
+        nome: "Frutas e Suas Informações",
+        desc: "descrição",
+        page: "FrutasInformacoes"
+      },
+      {
+        img:require('./../../../assets/Imc.png'),
+        nome: "Frases Motivacionais",
+        desc: "descrição",
+        page: "FrasesMotivacionais"
       }
     ]
 
@@ -47,7 +83,7 @@ export default function Home() {
           <Pressable onPress={() => navigation.navigate(item.page)}>
             <View style={ styles.tab}>
               <View style={styles.icon}>
-                <Text>{item.img}</Text>
+                <Image style={styles.Image} source={item.img} /> 
               </View>
               <View style={styles.content}>
                 <Text style={styles.nome}>{item.nome}</Text>
