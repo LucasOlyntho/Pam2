@@ -32,6 +32,10 @@ export default StyleSheet.create({
       icon: {
         flex:1
       },
+      Image :{
+        maxHeight: "100%",
+        maxWidth: "100%"
+      },
       content: {
         flex: 3
       },
@@ -47,3 +51,4 @@ export default StyleSheet.create({
         justifyContent: 'center',
       }
 });
+
