@@ -35,7 +35,7 @@ export default StyleSheet.create({
         borderColor: '#000',
     },
     celTopo: {
-        backgroundColor: "#0000ff",
+        backgroundColor: "#3040b0",
         borderWidth: 0,
     },
     txtTopo: {
@@ -43,14 +43,14 @@ export default StyleSheet.create({
         fontSize: 20,
     },
     celTitulo: {
-        backgroundColor: "#808080",
+        backgroundColor: "#707888",
     },
     txtCelTitulo: {
         color: '#fff',
     },
     celTomou: {
         flex: 3,
-        backgroundColor: "#1b98fa",
+        backgroundColor: "#40a8ff",
     },
     celIdade: {
         flex: 2,

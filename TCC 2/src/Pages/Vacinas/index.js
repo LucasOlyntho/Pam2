@@ -1,5 +1,6 @@
 import { CheckBox, FlatList, Modal, Text, View, StyleSheet, Pressable } from 'react-native';
 import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from './styles'
 
 export default function Index() {
@@ -71,12 +72,6 @@ export default function Index() {
     },
   ])
 
-  const [vacMarcadaJovem, setVacMarcadaJovem] = useState([false, false, false])
-
-  const [vacMarcadaAdulto, setVacMarcadaAdulto] = useState([false, true, false])
-
-  const [vacMarcadaGest, setVacMarcadaGest] = useState([false, false, true])
-
   const [vacMarcada, setVacMarcada] = useState([])
 
   const [calVac, setCalVac] = useState([])
@@ -86,14 +81,103 @@ export default function Index() {
     setFaixaEtaria(calendario)
 
     if (calendario == "Jovem") {
+
       setCalVac(calVacJovem)
-      setVacMarcada(vacMarcadaJovem)
+
+      AsyncStorage.getItem('VacJovem').then(value => {
+        if (value !== null && value !== "") {
+
+          let valorListaStr = value.split(',')
+          let valorlistaBool = []
+
+          valorListaStr.map((str, i, array) => {
+            if (str == 'true') {
+              valorlistaBool.push(true)
+            } else {
+              valorlistaBool.push(false)
+            }
+          })
+
+          setVacMarcada(valorlistaBool)
+
+        } else {
+
+          let listaMarcadas = []
+
+          for (let i = 0; i < calVacJovem.length; i++) {
+            listaMarcadas.push(false)
+          }
+
+          setVacMarcada(listaMarcadas)
+
+        }
+      })
+
     } else if (calendario == "Adulto") {
+
       setCalVac(calVacAdulto)
-      setVacMarcada(vacMarcadaAdulto)
+
+      AsyncStorage.getItem('VacAdulto').then(value => {
+        if (value !== null && value !== "") {
+
+          let valorListaStr = value.split(',')
+          let valorlistaBool = []
+
+          valorListaStr.map((str, i, array) => {
+            if (str == 'true') {
+              valorlistaBool.push(true)
+            } else {
+              valorlistaBool.push(false)
+            }
+          })
+
+          setVacMarcada(valorlistaBool)
+
+        } else {
+
+          let listaMarcadas = []
+
+          for (let i = 0; i < calVacAdulto.length; i++) {
+            listaMarcadas.push(false)
+          }
+
+          setVacMarcada(listaMarcadas)
+
+        }
+      })
+
     } else if (calendario == "Gestante") {
+
       setCalVac(calVacGest)
-      setVacMarcada(vacMarcadaGest)
+
+      AsyncStorage.getItem('VacGest').then(value => {
+        if (value !== null && value !== "") {
+
+          let valorListaStr = value.split(',')
+          let valorlistaBool = []
+
+          valorListaStr.map((str, i, array) => {
+            if (str == 'true') {
+              valorlistaBool.push(true)
+            } else {
+              valorlistaBool.push(false)
+            }
+          })
+
+          setVacMarcada(valorlistaBool)
+
+        } else {
+
+          let listaMarcadas = []
+
+          for (let i = 0; i < calVacGest.length; i++) {
+            listaMarcadas.push(false)
+          }
+
+          setVacMarcada(listaMarcadas)
+
+        }
+      })
     }
 
     setMdVisivel(false)
@@ -114,17 +198,13 @@ export default function Index() {
 
     setVacMarcada(novaVacMarcada)
 
-    /*
     if (faixaEtaria == "Jovem") {
-      setVacMarcadaJovem(novaVacMarcada)
-      AsyncStorage.setItem('VacJovem', vacMarcadaJovem).then(() => { }).catch(error => { console.error('Erro ao cadastrar vacinas de jovem'); });
+      AsyncStorage.setItem('VacJovem', novaVacMarcada).then(() => { console.log('Dados armazenados com sucesso!') }).catch(error => { console.error('Erro ao cadastrar vacinas de jovem'); });
     } else if (faixaEtaria == "Adulto") {
-      setVacMarcadaAdulto(novaVacMarcada)
-      AsyncStorage.setItem('VacAdulto', vacMarcadaAdulto).then(() => { }).catch(error => { console.error('Erro ao cadastrar vacinas de adulto'); });
+      AsyncStorage.setItem('VacAdulto', novaVacMarcada).then(() => { console.log('Dados armazenados com sucesso!') }).catch(error => { console.error('Erro ao cadastrar vacinas de adulto'); });
     } else if (faixaEtaria == "Gestante") {
-      setVacMarcadaGest(novaVacMarcada)
-      AsyncStorage.setItem('VacGest', vacMarcadaGest).then(() => { }).catch(error => { console.error('Erro ao cadastrar vacinas de gestante'); });
-    } */
+      AsyncStorage.setItem('VacGest', novaVacMarcada).then(() => { console.log('Dados armazenados com sucesso!') }).catch(error => { console.error('Erro ao cadastrar vacinas de gestante'); });
+    }
 
   }
 
