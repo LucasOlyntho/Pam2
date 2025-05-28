@@ -1,49 +1,78 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-      },
-      teste: {
-        backgroundColor: '#1C9AFA',
-        width: 100,
-        height: 100,
-      },
-      tab: {
-        height: 100,
-        margin: 10,
-        borderRadius: 10,
-        borderWidth: 2,
-        borderColor: "black",
-        flexDirection: 'row',
-      },
-      nome:{
-        textAlign: "center",
-        textTransform: "capitalize",
-        color: "#1C9AFA",
-      },
-      desc:{
-        textAlign: "center",
-        textTransform: "capitalize",
-        color: "#1C9AFA",
-        marginTop: 10,
-      },
-      icon: {
-        flex:1
-      },
-      content: {
-        flex: 3
-      },
-      textBox: {
-        width: 100,
-        height: 25,
-      },
-      nav: {
-        width: "100%",
-        height: 50,
-        backgroundColor: 'powderblue',
-        flex: 1,
-        justifyContent: 'center',
-      }
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  square: {
+    backgroundColor: '#f4f4f4',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center',
+    width: '100%',
+    maxWidth: 400,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5, 
+  },
+  texto: {
+    fontSize: 16,
+    marginBottom: 10,
+    color: '#333',
+    fontWeight: 'bold',
+  },
+  textBox: {
+    width: '80%',
+    height: 45,
+    borderColor: '#aaa',
+    borderWidth: 1.5,
+    borderRadius: 8,
+    marginBottom: 20,
+    paddingHorizontal: 12,
+    fontSize: 16,
+    backgroundColor: '#fff',
+  },
+  button: {
+    backgroundColor: '#005FA3', 
+    paddingVertical: 15,
+    paddingHorizontal: 50,
+    borderRadius: 10,
+    marginBottom: 20,
+    alignItems: 'center',
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 5, 
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  resultadoContainer: {
+    marginTop: 20,
+    padding: 15,
+    borderRadius: 8,
+    width: '80%',
+    alignItems: 'center',
+  },
+  resultadoTexto: {
+    fontSize: 20,
+    color: '#fff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  textTitle: {
+    fontSize: 60,
+    color: '#005FA3',
+    marginBottom: 50,
+    fontWeight: '500',
+  },
 });

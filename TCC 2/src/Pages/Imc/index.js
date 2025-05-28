@@ -1,93 +1,82 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { Pressable, TextInput } from 'react-native-web';
+import { Text, View, Pressable, TextInput } from 'react-native';
 import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import styles from './styles'
+import styles from './styles';
 
 export default function Imc() {
+    const [peso, setPeso] = useState('');
+    const [altura, setAltura] = useState('');
+    const [imc, setImc] = useState(null);
+    const [categoria, setCategoria] = useState('');
 
-    const [peso, setPeso] = useState(0)
-    const [altura, setAltura] = useState(0)
-    const [imc, setImc] = useState(0)
-    const [categoriasImc, setCategoriasImc] = useState([
-        {
-            limite: 18.5,
-            mensagem: "o peso abaixo do normal"
-        },
-        {
-            limite: 25,
-            mensagem: "o peso normal"
-        },
-        {
-            limite: 30,
-            mensagem: "excesso de peso"
-        },
-        {
-            limite: 35,
-            mensagem: "obesidade grau I"
-        },
-        {
-            limite: 40,
-            mensagem: "obesidade grau II"
-        },
-        {
-            limite: Infinity,
-            mensagem: "obesidade grau III"
-        },
-    ])
+    const categoriasImc = [
+        { limite: 18.5, mensagem: "peso abaixo do normal", cor: "#3498db" },
+        { limite: 25, mensagem: "peso normal", cor: "#2ecc71" },
+        { limite: 30, mensagem: "excesso de peso", cor: "#f39c12" },
+        { limite: 35, mensagem: "obesidade grau I", cor: "#e67e22" },
+        { limite: 40, mensagem: "obesidade grau II", cor: "#d35400" },
+        { limite: Infinity, mensagem: "obesidade grau III", cor: "#c0392b" },
+    ];
 
+    const calcularImc = () => {
+        const pesoImc = parseFloat(peso);
+        const alturaImc = parseFloat(altura);
+        
+        if (pesoImc > 0 && alturaImc > 0) {
+            const novoImc = pesoImc / (alturaImc * alturaImc);
+            setImc(novoImc);
 
-    const calcularImc = (pesoImc, alturaImc) => {
-
-        if(pesoImc > 0 && alturaImc > 0) {
-            setImc(pesoImc / (alturaImc * alturaImc))
-        } else {
-            setImc(0)
-        }
-
-    }
-
-    const mostrarImc = (imcMostrar) => {
-
-        if (imcMostrar <= 0)
-            return null;
-
-        else {
-
-            var msg = "Seu IMC é de " + Math.round(imcMostrar*10)/10 + ", você está com "
-
+        
             for (let i = 0; i < categoriasImc.length; i++) {
-                if (imcMostrar < categoriasImc[i].limite) {
-                    msg += categoriasImc[i].mensagem;
+                if (novoImc < categoriasImc[i].limite) {
+                    setCategoria(categoriasImc[i]);
                     break;
                 }
             }
-        
-            msg += ".";
-
-            return msg;
+        } else {
+            setImc(null);
+            setCategoria('');
         }
-    }
+    };
 
     return (
         <View style={styles.container}>
 
-            <View style = {styles.square}>
-
-            <Text>Insira o peso:</Text>
-            <TextInput style={styles.textBox} value={peso} onChangeText={(text) => setPeso(text)}></TextInput>
-            <Text>Insira a altura (em metros):</Text>
-            <TextInput style={styles.textBox} value={altura} onChangeText={(text) => setAltura(text)}></TextInput>
-
-            <Pressable onPress={() => calcularImc(peso, altura)}>
-                <View style={styles.teste}>
-                    <Text>Calcular</Text>
-                </View>
-            </Pressable>
+            <Text style={styles.textTitle}>IMC</Text>
             
-            <Text>{mostrarImc(imc)}</Text>
-  
+            <View style={styles.square}>
+                <Text style={styles.texto}>Insira o peso (em kg):</Text>
+                <TextInput 
+                    style={styles.textBox} 
+                    value={peso} 
+                    onChangeText={setPeso} 
+                    keyboardType="numeric" 
+                    placeholder="Ex: 70"
+                />
+                <Text style={styles.texto}>Insira a altura (em metros):</Text>
+                <TextInput 
+                    style={styles.textBox} 
+                    value={altura} 
+                    onChangeText={setAltura} 
+                    keyboardType="numeric" 
+                    placeholder="Ex: 1.75"
+                />
+
+                <Pressable onPress={calcularImc} style={({ pressed }) => [
+                    styles.button, 
+                    { opacity: pressed ? 0.7 : 1 }
+                ]}>
+                    <Text style={styles.buttonText}>Calcular</Text>
+                </Pressable>
+
+                {imc !== null && (
+                    <View style={[styles.resultadoContainer, { backgroundColor: categoria.cor }]}>
+                        <Text style={styles.resultadoTexto}>
+                            Seu IMC é {Math.round(imc * 10) / 10}, você está com {categoria.mensagem}.
+                        </Text>
+                    </View>
+                )}
+
             </View>
 
             <StatusBar style="auto" />

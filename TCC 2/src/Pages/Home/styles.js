@@ -17,28 +17,38 @@ export default StyleSheet.create({
     borderWidth: 2,
     borderColor: "black",
     flexDirection: 'row',
+    backgroundColor: "#f4f4f4", 
+    alignItems: 'center', 
+    padding: 10,
   },
   nome: {
     textAlign: "center",
     textTransform: "capitalize",
     color: "#1C9AFA",
+    fontWeight: 'bold', 
+    fontSize: 16,
   },
   desc: {
     textAlign: "center",
     textTransform: "capitalize",
-    color: "#1C9AFA",
-    marginTop: 10,
+    color: "#555", 
+    marginTop: 5,
+    fontSize: 14,
   },
   icon: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center', 
+    alignItems: 'center', 
   },
   Image: {
-    maxHeight: "100%",
-    maxWidth: "100%"
+    width: 80, 
+    height: 80, 
+    resizeMode: 'contain', 
   },
   content: {
     flex: 3,
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "center", 
   },
   textBox: {
     width: 100,
@@ -47,9 +57,9 @@ export default StyleSheet.create({
   nav: {
     width: "100%",
     height: 50,
-    backgroundColor: 'powderblue',
+    backgroundColor: '#1C9AFA', 
     flex: 1,
     justifyContent: 'center',
-  }
+    alignItems: 'center', 
+  },
 });
-
