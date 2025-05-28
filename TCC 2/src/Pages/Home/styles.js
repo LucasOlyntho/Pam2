@@ -40,9 +40,14 @@ export default StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center', 
   },
-  Image: {
+  image: {
     width: 80, 
     height: 80, 
+    resizeMode: 'contain', 
+  },
+  imageUsuario: {
+    width: 60, 
+    height: 60, 
     resizeMode: 'contain', 
   },
   content: {
@@ -55,6 +60,7 @@ export default StyleSheet.create({
     height: 25,
   },
   nav: {
+    flexDirection: 'row',
     width: "100%",
     height: 50,
     backgroundColor: '#1C9AFA', 

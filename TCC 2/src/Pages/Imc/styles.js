@@ -1,9 +1,18 @@
 import { StyleSheet } from "react-native";
 
+const COLORS = {
+  primary: "#3040b0",
+  secondary: "#707888",
+  accent: "#40a8ff",
+  translucentWhite: 'rgba(255, 255, 255, 0.5)',
+  white: "#fff",
+  black: "#000",
+};
+
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
@@ -36,10 +45,10 @@ export default StyleSheet.create({
     marginBottom: 20,
     paddingHorizontal: 12,
     fontSize: 16,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.white,
   },
   button: {
-    backgroundColor: '#005FA3', 
+    backgroundColor: COLORS.accent, 
     paddingVertical: 15,
     paddingHorizontal: 50,
     borderRadius: 10,
@@ -52,7 +61,7 @@ export default StyleSheet.create({
     elevation: 5, 
   },
   buttonText: {
-    color: '#fff',
+    color: COLORS.white,
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -65,13 +74,13 @@ export default StyleSheet.create({
   },
   resultadoTexto: {
     fontSize: 20,
-    color: '#fff',
+    color: COLORS.white,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   textTitle: {
     fontSize: 60,
-    color: '#005FA3',
+    color: COLORS.accent,
     marginBottom: 50,
     fontWeight: '500',
   },

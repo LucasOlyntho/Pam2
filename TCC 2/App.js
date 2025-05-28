@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from './src/Pages/Home';
+import Conta from './src/Pages/Conta';
 import Imc from './src/Pages/Imc';
 import BeberAgua from './src/Pages/BeberAgua';
 import Vacinas from './src/Pages/Vacinas';
@@ -21,6 +22,7 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name='Home' component={Home} />
+                <Stack.Screen name='Conta' component={Conta} />
                 <Stack.Screen name='Imc' component={Imc} />
                 <Stack.Screen name='BeberAgua' component={BeberAgua} />
                 <Stack.Screen name='Vacinas' component={Vacinas} />

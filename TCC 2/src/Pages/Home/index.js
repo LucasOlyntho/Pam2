@@ -66,7 +66,14 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <View style={styles.nav}>
-        <Text style={{ color: '#fff', fontSize: 18,  fontWeight: 'bold',  }}>U-Health</Text>
+        <View style={{flex: 5, justifyContent: 'center', alignItems: 'center', }}>
+          <Text style={{ color: '#fff', fontSize: 18,  fontWeight: 'bold',  }}>U-Health</Text>
+        </View>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>
+          <Pressable onPress={() => navigation.navigate("Conta")}>
+            <Image style={styles.imageUsuario} source={require('./../../../assets/Usuario.png')} />
+          </Pressable>
+        </View>
       </View>
 
       <View style={{ flex: 10 }}>
@@ -77,7 +84,7 @@ export default function Home() {
             <Pressable onPress={() => navigation.navigate(item.page)}>
               <View style={styles.tab}>
                 <View style={styles.icon}>
-                  <Image style={styles.Image} source={item.img} />
+                  <Image style={styles.image} source={item.img} />
                 </View>
                 <View style={styles.content}>
                   <Text style={styles.nome}>{item.nome}</Text>
