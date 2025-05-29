@@ -13,16 +13,12 @@ export default function TomarRemedio() {
   const [loading, setLoading] = useState(true); // Estado de carregamento
   const [error, setError] = useState(null); // Estado de erro
 
-  /*const [dadosForm, setdadosForm] = useState({
+  const [dadosForm, setdadosForm] = useState({
     nome: '',
-    senha: '',
-    email: '',
-    dataNasc: '',
-    genero: '',
-    foto: 'lol',
-    altura: 0,
-    peso: 0,
-  });*/
+    dose: 0,
+    tratamento: '',
+    horario: '',
+  });
 
   const [mdVisivel, setMdVisivel] = useState(false);
 
@@ -42,49 +38,36 @@ export default function TomarRemedio() {
   }, []);
 
   // Função de cadastro de usuário
-  /*const CadastrarUsuario = async () => {
-
-    if (!dadosForm.genero) {
-      alert('Por favor, insira um gênero válido!');
-      return;
-    }
+  const CadastrarRemedio = async () => {
 
     try {
       const response = await axios.post(apiUrl, dadosForm);
-      alert('Usuário cadastrado com sucesso!');
+      alert('Remédio cadastrado com sucesso!');
       setRemedios(prev => [...prev, response.data]);
       setdadosForm({
         nome: '',
-        senha: '',
-        email: '',
-        dataNasc: '',
-        genero: '',
-        foto: 'lol',
-        altura: 0,
-        peso: 0,
+        dose: 0,
+        tratamento: '',
+        horario: '',
       });
       navigation.navigate("Home")
     } catch (err) {
       console.error(err);
-      alert('Erro ao cadastrar usuário: ' + err.message);
+      alert('Erro ao cadastrar remédio: ' + err.message);
     }
-  };*/
+  };
 
   const abrirModal = () => {
     setMdVisivel(true)
   }
 
   const fecharModal = () => {
-    /*setdadosForm({
+    setdadosForm({
       nome: '',
-      senha: '',
-      email: '',
-      dataNasc: '',
-      genero: '',
-      foto: 'lol',
-      altura: 0,
-      peso: 0,
-    });*/
+      dose: 0,
+      tratamento: '',
+      horario: '',
+    });
 
     setMdVisivel(false)
   }
@@ -101,7 +84,7 @@ export default function TomarRemedio() {
             console.log('Renderizando item:', item); // Verificando o item que está sendo renderizado
             return (
               <View style={styles.usuarioContainer}>
-                <Text style={styles.title}>Nome: {item.nomeRemedio || 'N/A'}</Text>
+                <Text style={styles.title}>Remédio: {item.nomeRemedio || 'N/A'}</Text>
                 <Text>Dose: {item.doseRemedio || 'N/A'}</Text>
                 <Text>Tratamento: {item.tratamentoRemedio || 'N/A'}</Text>
                 <Text>Horário: {item.horarioRemedio || 'N/A'}</Text>
@@ -119,73 +102,46 @@ export default function TomarRemedio() {
       <Modal visible={mdVisivel} transparent={true}>
         <View style={styles.modalView}>
           <View style={styles.form}>
-            {/*<Text style={styles.title}>Cadastro de Usuário</Text>
+            <Text style={styles.title}>Cadastro de Usuário</Text>
 
             <TextInput
-              placeholder="Nome"
+              placeholder="Remédio"
               value={dadosForm.nome}
               onChangeText={(text) => setdadosForm({ ...dadosForm, nome: text })}
               style={styles.input}
             />
 
             <TextInput
-              placeholder="Senha"
-              secureTextEntry
-              value={dadosForm.senha}
-              onChangeText={(text) => setdadosForm({ ...dadosForm, senha: text })}
-              style={styles.input}
-            />
-
-            <TextInput
-              placeholder="Email"
-              keyboardType="email-address"
-              value={dadosForm.email}
-              onChangeText={(text) => setdadosForm({ ...dadosForm, email: text })}
-              style={styles.input}
-            />
-
-            <TextInput
-              placeholder="Data de Nascimento (YYYY-MM-DD)"
-              value={dadosForm.dataNasc}
-              onChangeText={(text) => setdadosForm({ ...dadosForm, dataNasc: text })}
-              style={styles.input}
-            />
-
-            <TextInput
-              placeholder="Gênero"
-              value={dadosForm.genero}
-              onChangeText={(text) => setdadosForm({ ...dadosForm, genero: text })}
-              style={styles.input}
-            />
-
-            <TextInput
-              placeholder="Altura (m)"
+              placeholder="Dose"
               keyboardType="decimal-pad"
-              value={dadosForm.altura}
-              onChangeText={(text) => setdadosForm({ ...dadosForm, altura: text ? parseFloat(text) : '' })}
+              value={dadosForm.dose}
+              onChangeText={(text) => setdadosForm({ ...dadosForm, dose: text ? parseFloat(text) : '' })}
+              style={styles.input}
+            />  
+
+            <TextInput
+              placeholder="Tratamento"
+              value={dadosForm.tratamento}
+              onChangeText={(text) => setdadosForm({ ...dadosForm, tratamento: text })}
               style={styles.input}
             />
 
             <TextInput
-              placeholder="Peso (kg)"
-              keyboardType="numeric"
-              value={dadosForm.peso}
-              onChangeText={(text) => setdadosForm({ ...dadosForm, peso: text ? parseFloat(text) : '' })}
+              placeholder="Horário (HH:MM:SS)"
+              value={dadosForm.horario}
+              onChangeText={(text) => setdadosForm({ ...dadosForm, horario: text })}
               style={styles.input}
             />
 
-            */}
             <View style={{ flexDirection: 'row' }}>
-              {//onPress={CadastrarUsuario}
-              }
-              <Pressable style={({ pressed }) => [
-                styles.button,
+              <Pressable onPress={CadastrarRemedio} style={({ pressed }) => [
+                styles.buttonCad,
                 { opacity: pressed ? 0.7 : 1 }
               ]}>
                 <Text>Cadastrar</Text>
               </Pressable>
               <Pressable onPress={fecharModal} style={({ pressed }) => [
-                styles.button,
+                styles.buttonCad,
                 { opacity: pressed ? 0.7 : 1 }
               ]}>
                 <Text>Cancelar</Text>

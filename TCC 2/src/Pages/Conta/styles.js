@@ -7,6 +7,7 @@ const COLORS = {
   translucentWhite: 'rgba(255, 255, 255, 0.5)',
   white: "#fff",
   black: "#000",
+  blue: "#139DF2",
   gray: '#f4f4f4',
   red: 'ff0000',
 };
@@ -33,8 +34,9 @@ export default StyleSheet.create({
   usuarioContainer: {
     marginTop: SPACING.large,
     padding: SPACING.small,
-    backgroundColor: COLORS.gray,
+    backgroundColor: COLORS.blue,
     borderRadius: 5,
+    borderWidth: 2,
     width: '100%',
   },
   modalView: {
@@ -62,6 +64,7 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: SPACING.small,
     textAlign: 'center',
+    borderBottomWidth: 1.5,
   },
   input: {
     backgroundColor: COLORS.white,
